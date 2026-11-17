@@ -1,0 +1,59 @@
+# Program Pemesanan Tiket Bioskop Sederhana
+
+print("===== CINEMA - PEMESANAN TIKET =====")
+print("1. Reguler  : Rp35.000")
+print("2. VIP      : Rp50.000")
+print("3. Premium  : Rp75.000")
+print("=====================================")
+
+while True:
+    # 1. Input Nama Pelanggan
+    nama = input("\nMasukkan nama pelanggan: ")
+
+    # 2. Input Jenis dan Jumlah Tiket
+    print("Pilih jenis tiket: Reguler / VIP / Premium")
+    jenis = input("Masukkan jenis tiket: ").lower()
+    jumlah = int(input("Masukkan jumlah tiket: "))
+
+    # 3. Tentukan Harga Tiket (Percabangan)
+    if jenis == "reguler":
+        harga_satuan = 35000
+        jenis_tampil = "Reguler"
+    elif jenis == "vip":
+        harga_satuan = 50000
+        jenis_tampil = "VIP"
+    elif jenis == "premium":
+        harga_satuan = 75000
+        jenis_tampil = "Premium"
+    else:
+        print("Jenis tiket tidak valid! Coba lagi.")
+        continue
+
+    total_awal = harga_satuan * jumlah
+
+    # 4. Cek Diskon (Jika > 3 tiket, diskon 10%)
+    if jumlah > 3:
+        diskon = total_awal * 0.10
+        total_bayar = total_awal - diskon
+        status_diskon = "Dapat Diskon 10%"
+    else:
+        diskon = 0
+        total_bayar = total_awal
+        status_diskon = "Tidak Dapat Diskon"
+
+    # Tampilkan Struk
+    print("\n----- STRUK PEMBAYARAN -----")
+    print("Nama Pelanggan :", nama)
+    print("Jenis Tiket     :", jenis_tampil)
+    print("Jumlah Tiket    :", jumlah)
+    print("Harga Satuan    : Rp", harga_satuan)
+    print("Total Awal      : Rp", int(total_awal))
+    print("Diskon          : Rp", int(diskon), f"({status_diskon})")
+    print("Total Bayar     : Rp", int(total_bayar))
+    print("----------------------------")
+
+    # 5. Proses Berulang (Melayani beberapa pelanggan)
+    lagi = input("\nAda pelanggan lain? (ya/tidak): ").lower()
+    if lagi != "ya":
+        print("\nTerima kasih! Program selesai.")
+        break
